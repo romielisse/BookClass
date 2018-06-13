@@ -6,20 +6,18 @@ public class Book {
     String description;
     double price;
     Boolean isInStock;
-    int numInStock;
 
     public Book(){
 
     }
 
-    public Book(String sku, String title, String author, String description, double price, Boolean isInStock, int numInStock) {
+    public Book(String sku, String title, String author, String description, double price, Boolean isInStock) {
         this.sku = sku;
         this.title = title;
         this.author = author;
         this.description = description;
         this.price = price;
         this.isInStock = isInStock;
-        this.numInStock = numInStock;
     }
 
     public String getSku() {
@@ -62,20 +60,12 @@ public class Book {
         this.price = price;
     }
 
-    public Boolean getInStock() {
+    public Boolean isInStock() {
         return isInStock;
     }
 
     public void setInStock(Boolean inStock) {
         isInStock = inStock;
-    }
-
-    public int getNumInStock() {
-        return numInStock;
-    }
-
-    public void setNumInStock(int numInStock) {
-        this.numInStock = numInStock;
     }
 
     public void getDisplayText(){
@@ -85,7 +75,7 @@ public class Book {
     }
 
     public double getPrice(int numBooks){
-        if(numBooks <= numInStock) {
+        if(this.isInStock()) {
             return numBooks * price;
         }
         return 0;
