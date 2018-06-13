@@ -1,5 +1,6 @@
 public class Book {
 
+    String sku;
     String title;
     String author;
     String description;
@@ -11,13 +12,22 @@ public class Book {
 
     }
 
-    public Book(String title, String author, String description, double price, Boolean isInStock, int numInStock) {
+    public Book(String sku, String title, String author, String description, double price, Boolean isInStock, int numInStock) {
+        this.sku = sku;
         this.title = title;
         this.author = author;
         this.description = description;
         this.price = price;
         this.isInStock = isInStock;
         this.numInStock = numInStock;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public String getTitle() {

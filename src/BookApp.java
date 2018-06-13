@@ -1,9 +1,12 @@
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.text.NumberFormat;
 
 public class BookApp {
     public static void main(String[] args) {
+        ArrayList<Book> books = new ArrayList<>();
+
         Book book1 = new Book("James and the Giant Peach",
                 "Roald Dahl",
                 "When poor James Henry Trotter loses his parents in a horrible\n rhinoceros accident, he is forced to live with his two wicked\n aunts. Then one day, a wizened old man gives James a bag of\n " +
@@ -42,6 +45,9 @@ public class BookApp {
                 System.out.println("Unfortunately, this book is out of stock.");
             }
         }
+    }
 
+    protected static void populateBooksDB(ArrayList<Book> books){
+        books.add("")
     }
 }
