@@ -5,17 +5,19 @@ public class Book {
     String description;
     double price;
     Boolean isInStock;
+    int numInStock;
 
     public Book(){
 
     }
 
-    public Book(String title, String author, String description, double price, Boolean isInStock) {
+    public Book(String title, String author, String description, double price, Boolean isInStock, int numInStock) {
         this.title = title;
         this.author = author;
         this.description = description;
         this.price = price;
         this.isInStock = isInStock;
+        this.numInStock = numInStock;
     }
 
     public String getTitle() {
@@ -58,9 +60,24 @@ public class Book {
         isInStock = inStock;
     }
 
+    public int getNumInStock() {
+        return numInStock;
+    }
+
+    public void setNumInStock(int numInStock) {
+        this.numInStock = numInStock;
+    }
+
     public void getDisplayText(){
         System.out.println("Title: " + title);
         System.out.println("Author: " + author);
         System.out.println("Description: " + description);
+    }
+
+    public double getPrice(int numBooks){
+        if(numBooks <= numInStock) {
+            return numBooks * price;
+        }
+        return 0;
     }
 }
