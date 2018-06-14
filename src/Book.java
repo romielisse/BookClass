@@ -20,6 +20,14 @@ public class Book {
         this.isInStock = isInStock;
     }
 
+    public Book(String title, String author, String description, double price, Boolean isInStock) {
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.price = price;
+        this.isInStock = isInStock;
+    }
+
     public String getSku() {
         return sku;
     }
@@ -68,10 +76,22 @@ public class Book {
         isInStock = inStock;
     }
 
+    // getDisplayText()
+    // Created: June 13, 2018
+    // Modified: June 14, 2018 to remove System.out.println
+    //           and to only return a string containing the
+    //           author, title, and description
+    /*
     public void getDisplayText(){
         System.out.println("Title: " + title);
         System.out.println("Author: " + author);
         System.out.println("Description: " + description);
+    }
+    */
+
+    public String getDisplayText(){
+        String s = this.title + "\n" + this.author + "\n" + this.description;
+        return s;
     }
 
     public double getPrice(int numBooks){

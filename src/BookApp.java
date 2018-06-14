@@ -21,11 +21,10 @@ public class BookApp {
         //getPrice(books.get(0));
 
         // Get book based on SKU entered by the user
-        getBook();
+        //getBook();
 
-
-
-
+        // Get book by calling overloaded constructor in BookDB
+        getBookFromConstructor();
 
     }
 
@@ -84,4 +83,30 @@ public class BookApp {
             System.out.println("No existing book for SKU entered.");
         }
     }
+
+    protected  static void getBookFromConstructor() {
+        String sku = "", bookInfo;
+        Book book = new Book();
+
+        System.out.printf("Enter SKU to get book: ");
+        sku = sc.nextLine();
+
+        // Find book associated with inputted SKU
+        book = bookDB.findBook(sku);
+        book = new Book(book.title, book.author, book.description, book.price, book.isInStock);
+
+
+        // Create new BookDB object with SKU
+        bookDB = new BookDB(sku);
+
+
+        // Set values of BookDB object with "book" found above
+
+        // Output book info
+        bookInfo = bookDB.getDisplayText();
+
+        System.out.println("BOOK INFO for SKU " + sku + "\n");
+        System.out.println(bookInfo);
+    }
+
 }
