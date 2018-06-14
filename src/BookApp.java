@@ -7,12 +7,12 @@ public class BookApp {
 
     static Scanner sc = new Scanner(System.in);
     static NumberFormat formatter = new DecimalFormat("#0.00");
-    static ArrayList<Book> books = new ArrayList<>();
+    static BookDB bookDB = new BookDB();
 
     public static void main(String[] args) {
 
         // Populate books
-        populateBooksDB(books);
+        populateBooksDB();
 
         // Print book info: author, title, book description
         //printBookInfo(books.get(0));
@@ -29,13 +29,17 @@ public class BookApp {
 
     }
 
-    protected static void populateBooksDB(ArrayList<Book> books){
-        books.add(new Book("Java1001","Head First Java","Kathy Sierra and Bert Bates","Kathy Sierra and Bert Bates",47.50,true));
+    protected static void populateBooksDB(){
+        ArrayList<Book> books = new ArrayList<>();
+
+        books.add(new Book("Java1001","Head First Java","Kathy Sierra and Bert Bates","Easy to read Java workbook",47.50,true));
         books.add(new Book("Java1002","Thinking in Java","Bruce Eckel","Details about Java under the hood",20,true));
         books.add(new Book("Orcl1003","OCP: Oracle Certified Professional Java SE","Jeanne Boyarsky","Everything you need to know in one place",45,true));
         books.add(new Book("Python1004","Automate the Boring Stuff with Python","Al Sweigart","Fun with Python",10.50,false));
         books.add(new Book("Zombie1005","The Maker's Guide to the Zombie Apocalypse","Simon Monk","Defend Your Base with Simple Circuits, Arduino, and Raspberry Pi",16.50,true));
         books.add(new Book("Rasp1006","Raspberry Pi Projects for the Evil Genius","Donald Norris","A dozen fiendishly fun projects for the Raspberry Pi!",14.75,false));
+
+        bookDB.setBooks(books);
     }
 
     protected static void printBookInfo(Book book) {
@@ -70,12 +74,14 @@ public class BookApp {
         System.out.printf("Enter SKU to get book: ");
         sku = sc.nextLine();
 
-        for(Book b:books){
-            if(b.sku.equalsIgnoreCase(sku)){
-                book = b;
-            }
-        }
+        // Call method in BookDB to located book associated with SKU
+        book = bookDB.findBook(sku);
 
-        book.getDisplayText();
+        if(book != null) {
+            book.getDisplayText();
+        }
+        else {
+            System.out.println("No existing book for SKU entered.");
+        }
     }
 }

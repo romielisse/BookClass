@@ -1,16 +1,27 @@
-public class BookDB extends Book {
+import java.util.ArrayList;
 
-    Book book;
+public class BookDB {
+
+    ArrayList<Book> books;
 
     public BookDB(){
 
     }
 
-    public Book getBook(String sku) {
-        return book;
+    public ArrayList<Book> getBooks() {
+        return books;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBooks(ArrayList<Book> books) {
+        this.books = books;
+    }
+
+    public Book findBook(String sku) {
+        for(Book book:books) {
+            if(book.sku.equalsIgnoreCase((sku))){
+                return book;
+            }
+        }
+        return null;
     }
 }
